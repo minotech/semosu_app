@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,7 +17,34 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        WebView mWebView = (WebView) findViewById(R.id.webView);
+        mWebView.setInitialScale(1);
+
+        WebSettings webSettings = mWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setBuiltInZoomControls(true);
+        webSettings.setSupportZoom(true);
+        webSettings.setLoadWithOverviewMode(true);
+        webSettings.setDefaultTextEncodingName("EUC-KR");
+
+        webSettings.setGeolocationEnabled(true);
+        webSettings.setPluginState(WebSettings.PluginState.ON);
+        webSettings.setSupportMultipleWindows(false);
+        webSettings.setDomStorageEnabled(true);
+
+        webSettings.setAppCacheEnabled(true);
+        webSettings.setAppCacheMaxSize(1024*1024*8);
+        webSettings.setAppCachePath("/data/data/" + getApplicationContext().getPackageName());
+
+        webSettings.setLoadsImagesAutomatically(true);
+        webSettings.setUseWideViewPort(true);
+        webSettings.setLoadsImagesAutomatically(true);
+
+        mWebView.loadUrl("http://semosu.com");
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
