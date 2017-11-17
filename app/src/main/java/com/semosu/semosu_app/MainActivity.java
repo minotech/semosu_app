@@ -41,9 +41,13 @@ public class MainActivity extends AppCompatActivity {
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadsImagesAutomatically(true);
 
+        mWebView.getSettings().setBuiltInZoomControls(true); // <!-- 확대축소 버튼 없애기 -->
+        mWebView.getSettings().setSupportZoom(true);        // <!-- 확대축소 버튼 없애기 -->
+        mWebView.getSettings().setDisplayZoomControls(false); // <!-- 확대축소 버튼 없애기 -->
+
+
         mWebView.loadUrl("http://semosu.com");
     }
-
 
 
     @Override
@@ -67,4 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
 }
