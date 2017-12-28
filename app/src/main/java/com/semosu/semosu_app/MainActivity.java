@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.app.Activity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,7 +41,10 @@ public class MainActivity extends AppCompatActivity {
         mWebView.getSettings().setBuiltInZoomControls(true);
         mWebView.getSettings().setSupportZoom(true);
         mWebView.getSettings().setDisplayZoomControls(false);
+        mWebView.setWebChromeClient(new FullscreenableChromeClient(MainActivity.this));
 
+  //      mWebView.setLayerType(View.LAYER_TYPE_HARDWARE , null);  //재생오류 수정
+  //      mWebView.getSettings().setDomStorageEnabled(true);
 
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
